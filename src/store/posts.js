@@ -6,6 +6,11 @@ export default {
     posts: [],
     ststus: ''
   },
+  getters: {
+    postsCounter: state => {
+      return state.posts.length
+    }
+  },
   mutations: {
     SET_STATUS(state, status) {
       state.status = status
