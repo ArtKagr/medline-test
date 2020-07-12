@@ -13,9 +13,16 @@ body {
     &__header {
         display: flex;
         align-items: center;
-        padding: 16px;
+        padding: 16px 24px;
         width: 100%;
         background: white;
+
+        &-logo {
+            font-size: 20px;
+            font-weight: 600px;
+            letter-spacing: 4px;
+            margin-right: 36px;
+        }
     }
 
     &__sidebar {
