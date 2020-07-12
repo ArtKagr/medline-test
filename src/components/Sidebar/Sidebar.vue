@@ -9,3 +9,5 @@
         name: 'sidebar'
     }
 </script>
+
+<style src="./Sidebar.scss" lang="scss" />

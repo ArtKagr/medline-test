@@ -9,3 +9,5 @@
         name: 'header'
     }
 </script>
+
+<style src="./Header.scss" lang="scss" />

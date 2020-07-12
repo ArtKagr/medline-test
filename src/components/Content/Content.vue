@@ -9,3 +9,5 @@
         name: 'content'
     }
 </script>
+
+<style src="./Content.scss" lang="scss" />
