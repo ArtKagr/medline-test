@@ -1,3 +1,7 @@
+html {
+    font-family: 'Montserrat';
+}
+
 body {
     margin: 0;
 }
@@ -7,8 +11,10 @@ body {
     flex-wrap: wrap;
 
     &__header {
+        display: flex;
+        align-items: center;
+        padding: 16px;
         width: 100%;
-        height: 60px;
         background: white;
     }
 
@@ -24,3 +30,30 @@ body {
         background: rgba(26, 134, 208, 0.2);
     }
 }
+
+$white:    #fff !default;
+$gray-100: #f8f9fa !default;
+$gray-200: #EAF0F6 !default;
+$gray-300: #D7DFE6 !default;
+$gray-400: #c1ccd3 !default;
+$gray-500: #a3aeb7 !default;
+$gray-600: #798892 !default;
+$gray-700: #495057 !default;
+$gray-800: #3c484f !default;
+$gray-900: #29323a !default;
+$black:    #000 !default;
+$gray-light: $gray-100 !default;
+
+$blue:    #005792 !default;
+$indigo:  #7f3ddb !default;
+$purple:  #9964e3 !default;
+$pink:    #e54e9a !default;
+$red:     #FD5F00 !default;
+$orange:  #ff7d47 !default;
+$yellow:  #FDA700 !default;
+$green:   #68ca66 !default;
+$teal:    #21AE8C !default;
+$cyan:    #1A86D0 !default;
+$default: #E9ECEF !default;
+$inverse: #002B49 !default;
+
