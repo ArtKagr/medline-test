@@ -63,18 +63,23 @@
 
         &-link {
             max-width: 120px;
-            cursor: pointer;
             margin: 0;
             padding: 16px 24px;
             font-size: 13px;
-            color: #1A86D0;
             white-space: nowrap;
             overflow: hidden; 
             text-overflow: ellipsis;
 
-            &.-disabled {
-                cursor: default;
-                color: #495057;
+            a {
+                cursor: pointer;
+                user-select: none;
+                color: #1A86D0;
+                text-decoration: none;
+
+                &.-disabled {
+                    cursor: default;
+                    color: #495057;
+                }
             }
         }
     }

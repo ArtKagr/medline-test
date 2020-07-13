@@ -5,7 +5,9 @@
                 <h1 class="app-header-block-logo">LOGO</h1>
                 <PostsCounter/>
             </div>
-            <p v-if="slot === 'post'" class="app-header-link" @click="openTasksList">Вернуться к списку статей</p>
+            <p v-if="slot === 'post'" class="app-header-link" @click="openTasksList">
+                <router-link to="/posts">Вернуться к списку статей</router-link>
+            </p>
         </div>
         <div class="app-sidebar">
             <RandomPost :posts="posts" @post-is-selected="postIsSelected"/>
@@ -50,6 +52,9 @@ export default {
         this.$store.dispatch('comments/fetchComments')
     },
     watch: {
+        posts: function() {
+            if(this.$route.params.id) this.postIsSelected(Number(this.$route.params.id))
+        },
         comments: function() {
             this.getRandomComments()
         }

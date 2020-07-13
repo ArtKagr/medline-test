@@ -12,8 +12,12 @@
             </div>
         </div>
         <div class="current_post-pagination">
-            <p class="current_post-pagination-link" :class="previousPost ? '' : '-disabled'" @click="openPost(previousPost)">{{previousPost ? previousPost.title : 'Предыдущая статья'}}</p>
-            <p class="current_post-pagination-link" :class="nextPost ? '' : '-disabled'" @click="openPost(nextPost)">{{nextPost ? nextPost.title : 'Следующая статья'}}</p>
+            <p class="current_post-pagination-link" @click="openPost(previousPost)">
+                <router-link :to="`/posts/${previousPost ? previousPost.id : 1}`" :class="previousPost ? '' : '-disabled'">{{previousPost ? previousPost.title : 'Предыдущая статья'}}</router-link>
+            </p>
+            <p class="current_post-pagination-link" @click="openPost(nextPost)">
+                <router-link :to="`/posts/${nextPost ? nextPost.id : 1}`" :class="nextPost ? '' : '-disabled'">{{nextPost ? nextPost.title : 'Следующая статья'}}</router-link>
+            </p>
         </div>
     </div>
 </template>

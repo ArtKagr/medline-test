@@ -1,8 +1,10 @@
 <template>
     <div class="random_post" @click="openPost">
-        <h2 class="random_post-header">Случайная статья</h2>
-        <h1 class="random_post-title">{{randomPost ? randomPost.title : 'Заголовок'}}</h1>
-        <p class="random_post-description" type="text" maxlength="60">{{randomPost ? randomPost.body : 'Описание'}}</p>
+        <router-link class="random_post-link" :to="`/posts/${randomPost.id}`">
+            <h2 class="random_post-link-header">Случайная статья</h2>
+            <h1 class="random_post-link-title">{{randomPost ? randomPost.title : 'Заголовок'}}</h1>
+            <p class="random_post-link-description" type="text" maxlength="60">{{randomPost ? randomPost.body : 'Описание'}}</p>
+        </router-link>
     </div>
 </template>
 

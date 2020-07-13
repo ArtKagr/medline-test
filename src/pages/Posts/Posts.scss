@@ -17,24 +17,29 @@
             &:first-child {
                 margin-top: 0;
             }
-    
-            &-title {
-                margin: 0;
-            }
-    
-            &-description {
-                margin: 8px 0;
-                white-space: nowrap;
-                overflow: hidden; 
-                text-overflow: ellipsis;
-            }
-    
-            &-comments {
-                display: inline-block;
-                padding: 2px 6px;
-                background: #21AE8C;
-                color: white;
-                border-radius: 7px;
+            
+            &-link {
+                color: black;
+                text-decoration: none;
+                
+                &-title {
+                    margin: 0;
+                }
+        
+                &-description {
+                    margin: 8px 0;
+                    white-space: nowrap;
+                    overflow: hidden; 
+                    text-overflow: ellipsis;
+                }
+        
+                &-comments {
+                    display: inline-block;
+                    padding: 2px 6px;
+                    background: #21AE8C;
+                    color: white;
+                    border-radius: 7px;
+                }
             }
         }
     }
