@@ -1,7 +1,7 @@
 .posts {
 
     &-posts_field {
-        max-height: calc(100vh - 120px);
+        max-height: calc(100vh - 170px);
         overflow: auto;
         margin-bottom: 24px;
 
@@ -12,7 +12,7 @@
             border-radius: 7px;
             background: white;
             margin-top: 12px;
-            padding: 8px 16px;
+            padding: 16px;
 
             &:first-child {
                 margin-top: 0;
@@ -63,6 +63,10 @@
     
                 &:focus {
                     outline: none;
+                    color: #1A86D0;
+                }
+
+                &.-active {
                     color: #1A86D0;
                 }
             }

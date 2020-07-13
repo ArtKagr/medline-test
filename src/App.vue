@@ -8,9 +8,9 @@
             <p v-if="slot === 'post'" class="app-header-link" @click="openTasksList">Вернуться к списку статей</p>
         </div>
         <div class="app-sidebar">
-            <RandomPost :serial-number="0" @post-is-selected="postIsSelected"/>
+            <RandomPost :posts="posts" @post-is-selected="postIsSelected"/>
             <LastComment :random-comments="randomComments" @post-is-selected="postIsSelected"/>
-            <RandomPost :serial-number="1" @post-is-selected="postIsSelected"/>
+            <RandomPost :posts="posts" @post-is-selected="postIsSelected"/>
         </div>
         <div class="app-content">
             <Posts v-if="slot === 'posts'" :posts="posts" :comments="comments" @post-is-selected="postIsSelected"/>

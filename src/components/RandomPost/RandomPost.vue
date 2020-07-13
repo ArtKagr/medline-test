@@ -10,27 +10,25 @@
     export default {
         name: 'random-post',
         props: {
-            serialNumber: Number
+            posts: Array
         },
         data() {
             return {
-                randomId: null
+                randomId: null,
+                randomPost: {}
             }
         },
         watch: {
             postsCounter: function(newCounter) {
                 this.randomId = Math.floor(Math.random() * (newCounter - 1) + 1)
             },
-            randomId: function(newId) {
-                this.$store.dispatch('posts/fetchRandomPost', newId)
+            posts: function(newPosts) {
+                this.randomPost = newPosts.find(post => post.id === this.randomId)
             }
         },
         computed: {
             postsCounter() {
                 return this.$store.getters['posts/postsCounter']
-            },
-            randomPost() {
-                return this.$store.state.posts.randomPosts[this.serialNumber]
             }
         },
         methods: {
