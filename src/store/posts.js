@@ -4,17 +4,12 @@ export default {
     namespaced: true,
     state: {
         posts: [],
-        currentPost: {},
         randomPosts: [],
         ststus: ''
     },
     getters: {
         postsCounter: state => {
             return state.posts.length
-        },
-        lastPostId: state => {
-            let idsArray = state.posts.map(post => post.id)
-            return Math.max.apply(null, idsArray);
         }
     },
     mutations: {

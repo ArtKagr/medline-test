@@ -1,16 +1,19 @@
 <template>
     <div class="app">
-        <div class="app__header">
-            <div class="app__header-logo">LOGO</div>
-            <PostsCounter/>
+        <div class="app-header">
+            <div class="app-header-block">
+                <h1 class="app-header-block-logo">LOGO</h1>
+                <PostsCounter/>
+            </div>
+            <p v-if="slot === 'post'" class="app-header-link" @click="openTasksList">Вернуться к списку статей</p>
         </div>
-        <div class="app__sidebar">
+        <div class="app-sidebar">
             <RandomPost :serial-number="0" @post-is-selected="postIsSelected"/>
-            <LastComment :random-comments="randomComments"/>
+            <LastComment :random-comments="randomComments" @post-is-selected="postIsSelected"/>
             <RandomPost :serial-number="1" @post-is-selected="postIsSelected"/>
         </div>
-        <div class="app__content">
-            <Posts v-if="slot === 'posts'"/>
+        <div class="app-content">
+            <Posts v-if="slot === 'posts'" :posts="posts" :comments="comments" @post-is-selected="postIsSelected"/>
             <CurrentPost v-else :selected-post="selectedPost" :previous-post="previousPost" :next-post="nextPost" @post-is-selected="postIsSelected"/>
         </div>
     </div>
@@ -38,8 +41,8 @@ export default {
             selectedPost: {},
             previousPost: {},
             nextPost: {},
+            numberOfComments: 5,
             randomComments: []
-
         }
     },
     created() {
@@ -47,9 +50,6 @@ export default {
         this.$store.dispatch('comments/fetchComments')
     },
     watch: {
-        posts: function() {
-            this.getRandomComments()
-        },
         comments: function() {
             this.getRandomComments()
         }
@@ -61,30 +61,38 @@ export default {
         comments() {
             return this.$store.state.comments.comments
         },
-        lastPostId() {
-            return this.$store.getters['posts/lastPostId']
-        },
         postsCounter() {
             return this.$store.getters['posts/postsCounter']
+        },
+        commentsCounter() {
+            return this.$store.getters['comments/commentsCounter']
         }
     },
     methods: {
         postIsSelected(selectedPost) {
             this.slot = 'post'
-            this.selectedPost = selectedPost
-            let selectedPostIndex = this.posts.findIndex(post => post.id === selectedPost.id)
+            let selectedPostIndex
+            if(typeof selectedPost === 'number') {
+                this.selectedPost = this.posts.find(post => post.id === selectedPost)
+                selectedPostIndex = this.posts.findIndex(post => post.id === selectedPost)
+            } else {
+                this.selectedPost = selectedPost
+                selectedPostIndex = this.posts.findIndex(post => post.id === selectedPost.id)
+            }
             selectedPostIndex === 0 ? this.previousPost = null : this.previousPost = this.posts[selectedPostIndex - 1]
-            selectedPostIndex === this.lastPostId ? this.nextPost = null : this.nextPost = this.posts[selectedPostIndex + 1]
+            selectedPostIndex === this.postsCounter - 1 ? this.nextPost = null : this.nextPost = this.posts[selectedPostIndex + 1]
+        },
+        generateRandomId(min, max) {
+            return Math.floor(Math.random() * (max - min) + min)
         },
         getRandomComments() {
-            let numberOfComments = 5,
-                randomComments = [],
-                randomId = Math.floor(Math.random() * (this.postsCounter - 1) + 1)
-            while(numberOfComments > 0) {
-                randomComments.push(this.comments.find(comment => comment.postId === randomId))
-                numberOfComments --
+            while(this.numberOfComments > 0) {
+                this.randomComments.push(this.comments[this.generateRandomId(this.commentsCounter, 1)])
+                this.numberOfComments --
             }
-            this.randomComments = randomComments
+        },
+        openTasksList() {
+            this.slot = 'posts'
         }
     }
 }
