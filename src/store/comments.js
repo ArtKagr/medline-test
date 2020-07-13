@@ -3,16 +3,24 @@ import axios from "axios";
 export default {
   namespaced: true,
   state: {
-    comments: [],
-    ststus: ''
+      comments: [],
+      status: ''
+  },
+  getters: {
+    commentsCounter: state => {
+        return state.comments.length
+    },
+    commentsByPostId: state => postId => {
+        return state.comments.filter(comment => comment.postId === postId)
+    }
   },
   mutations: {
-    SET_STATUS(state, status) {
-      state.status = status
-    },
-    SAVE_COMMENTS(state, comments) {
-      state.comments = comments;
-    }
+      SET_STATUS(state, status) {
+          state.status = status
+      },
+      SAVE_COMMENTS(state, comments) {
+          state.comments = comments;
+      }
   },
   actions: {
     async fetchComments({ commit }) {

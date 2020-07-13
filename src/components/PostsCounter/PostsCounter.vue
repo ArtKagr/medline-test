@@ -14,8 +14,8 @@
             }
         },
         methods: {
-            pluralizePosts(hour) {
-                return pluralizeWords(hour, ['статья', 'статьи', 'статей']);
+            pluralizePosts(post) {
+                return pluralizeWords(post, ['статья', 'статьи', 'статей']);
             },
         }
     }
