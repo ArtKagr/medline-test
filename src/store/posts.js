@@ -4,7 +4,6 @@ export default {
     namespaced: true,
     state: {
         posts: [],
-        randomPosts: [],
         ststus: ''
     },
     getters: {
@@ -19,9 +18,6 @@ export default {
         SAVE_POSTS(state, posts) {
             state.posts = posts;
         },
-        SAVE_RANDOM_POST(state, randomPost) {
-            state.randomPosts.push(randomPost)
-        }
     },
     actions: {
       async fetchPosts({ commit }) {
@@ -34,15 +30,5 @@ export default {
               commit('SET_STATUS', 'error');
           }
       },
-      async fetchRandomPost({ commit }, id) {
-        commit('SET_STATUS', 'fetching');
-        try {
-            let { data } = await axios.get(`/posts/${id}`);
-            commit('SAVE_RANDOM_POST', data);
-            commit('SET_STATUS', 'current-post-is-fetched');
-        } catch {
-            commit('SET_STATUS', 'error');
-        }
-    },
     },
 };

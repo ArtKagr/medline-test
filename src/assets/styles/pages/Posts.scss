@@ -1,0 +1,78 @@
+@import '../general.scss';
+
+.posts {
+
+    &-posts_field {
+        max-height: calc(100vh - 170px);
+        overflow: auto;
+        margin-bottom: 24px;
+
+        &-post {
+            cursor: pointer;
+            margin-top: 12px;
+            padding: 16px;
+
+            &:first-child {
+                margin-top: 0;
+            }
+            
+            &-link {
+                color: $black;
+                text-decoration: none;
+                
+                &-title {
+                    margin: 0;
+                    font-size: $font-size-large;
+                }
+        
+                &-description {
+                    margin: 8px 0;
+                    white-space: nowrap;
+                    overflow: hidden; 
+                    font-size: $font-size-initial;
+                    text-overflow: ellipsis;
+                }
+        
+                &-comments {
+                    display: inline-block;
+                    padding: 2px 6px;
+                    background: $info;
+                    color: $white;
+                    border-radius: 7px;
+                    font-size: $font-size-base;
+                }
+            }
+        }
+    }
+
+    &-pagination_field {
+        display: flex;
+        justify-content: flex-end;
+        padding: 8px 16px;
+
+        &-pagination {
+            margin: 0;
+            padding: 0;
+            width: 40%;
+            display: flex;
+            justify-content: space-between;
+            list-style-type: none;
+    
+            .page-link {
+                cursor: pointer;
+                border: none;
+                background: none;
+                font-size: $font-size-base;
+    
+                &:focus {
+                    outline: none;
+                    color: $link;
+                }
+
+                &.-active {
+                    color: $link;
+                }
+            }
+        }
+    }
+}

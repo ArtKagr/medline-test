@@ -5,12 +5,14 @@
                 <h1 class="app-header-block-logo">LOGO</h1>
                 <PostsCounter/>
             </div>
-            <p v-if="slot === 'post'" class="app-header-link" @click="openTasksList">Вернуться к списку статей</p>
+            <p v-if="slot === 'post'" class="app-header-link" @click="openTasksList">
+                <router-link to="/posts">Вернуться к списку статей</router-link>
+            </p>
         </div>
         <div class="app-sidebar">
-            <RandomPost :serial-number="0" @post-is-selected="postIsSelected"/>
+            <RandomPost :posts="posts" @post-is-selected="postIsSelected"/>
             <LastComment :random-comments="randomComments" @post-is-selected="postIsSelected"/>
-            <RandomPost :serial-number="1" @post-is-selected="postIsSelected"/>
+            <RandomPost :posts="posts" @post-is-selected="postIsSelected"/>
         </div>
         <div class="app-content">
             <Posts v-if="slot === 'posts'" :posts="posts" :comments="comments" @post-is-selected="postIsSelected"/>
@@ -20,11 +22,11 @@
 </template>
 
 <script>
-import PostsCounter from './components/PostsCounter/PostsCounter.vue'
-import RandomPost from './components/RandomPost/RandomPost.vue'
-import LastComment from './components/LastComment/LastComment.vue'
-import CurrentPost from './pages/CurrentPost/CurrentPost.vue'
-import Posts from './pages/Posts/Posts.vue'
+import PostsCounter from './components/PostsCounter.vue'
+import RandomPost from './components/RandomPost.vue'
+import LastComment from './components/LastComment.vue'
+import CurrentPost from './pages/CurrentPost.vue'
+import Posts from './pages/Posts.vue'
 
 export default {
     name: 'App',
@@ -50,6 +52,9 @@ export default {
         this.$store.dispatch('comments/fetchComments')
     },
     watch: {
+        posts: function() {
+            if(this.$route.params.id) this.postIsSelected(Number(this.$route.params.id))
+        },
         comments: function() {
             this.getRandomComments()
         }

@@ -20,5 +20,3 @@
         }
     }
 </script>
-
-<style src="./PostsCounter.scss" lang="scss" />
