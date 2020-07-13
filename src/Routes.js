@@ -1,8 +1,8 @@
 import Vue from 'vue';
 import Router from 'vue-router';
 
-import Posts from '@/pages/Posts/Posts'
-import CurrentPost from '@/pages/CurrentPost/CurrentPost'
+import Posts from '@/pages/Posts'
+import CurrentPost from '@/pages/CurrentPost'
 
 Vue.use(Router);
 

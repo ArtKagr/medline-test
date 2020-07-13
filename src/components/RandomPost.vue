@@ -1,5 +1,5 @@
 <template>
-    <div class="random_post" @click="openPost">
+    <div class="random_post -card" @click="openPost">
         <router-link class="random_post-link" :to="`/posts/${randomPost.id}`">
             <h2 class="random_post-link-header">Случайная статья</h2>
             <h1 class="random_post-link-title">{{randomPost ? randomPost.title : 'Заголовок'}}</h1>
@@ -40,5 +40,3 @@
         }
     }
 </script>
-
-<style src="./RandomPost.scss" lang="scss" />

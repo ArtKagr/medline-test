@@ -1,3 +1,5 @@
+@import '../general.scss';
+
 .posts {
 
     &-posts_field {
@@ -7,10 +9,6 @@
 
         &-post {
             cursor: pointer;
-            border: 1px solid #EAF0F6;
-            box-shadow: 0px 16px 24px rgba(0, 0, 0, 0.06);
-            border-radius: 7px;
-            background: white;
             margin-top: 12px;
             padding: 16px;
 
@@ -19,26 +17,29 @@
             }
             
             &-link {
-                color: black;
+                color: $black;
                 text-decoration: none;
                 
                 &-title {
                     margin: 0;
+                    font-size: $font-size-large;
                 }
         
                 &-description {
                     margin: 8px 0;
                     white-space: nowrap;
                     overflow: hidden; 
+                    font-size: $font-size-initial;
                     text-overflow: ellipsis;
                 }
         
                 &-comments {
                     display: inline-block;
                     padding: 2px 6px;
-                    background: #21AE8C;
-                    color: white;
+                    background: $info;
+                    color: $white;
                     border-radius: 7px;
+                    font-size: $font-size-base;
                 }
             }
         }
@@ -47,10 +48,6 @@
     &-pagination_field {
         display: flex;
         justify-content: flex-end;
-        border: 1px solid #EAF0F6;
-        box-shadow: 0px 16px 24px rgba(0, 0, 0, 0.06);
-        border-radius: 7px;
-        background: white;
         padding: 8px 16px;
 
         &-pagination {
@@ -65,14 +62,15 @@
                 cursor: pointer;
                 border: none;
                 background: none;
+                font-size: $font-size-base;
     
                 &:focus {
                     outline: none;
-                    color: #1A86D0;
+                    color: $link;
                 }
 
                 &.-active {
-                    color: #1A86D0;
+                    color: $link;
                 }
             }
         }

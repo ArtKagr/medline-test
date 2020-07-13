@@ -22,11 +22,11 @@
 </template>
 
 <script>
-import PostsCounter from './components/PostsCounter/PostsCounter.vue'
-import RandomPost from './components/RandomPost/RandomPost.vue'
-import LastComment from './components/LastComment/LastComment.vue'
-import CurrentPost from './pages/CurrentPost/CurrentPost.vue'
-import Posts from './pages/Posts/Posts.vue'
+import PostsCounter from './components/PostsCounter.vue'
+import RandomPost from './components/RandomPost.vue'
+import LastComment from './components/LastComment.vue'
+import CurrentPost from './pages/CurrentPost.vue'
+import Posts from './pages/Posts.vue'
 
 export default {
     name: 'App',

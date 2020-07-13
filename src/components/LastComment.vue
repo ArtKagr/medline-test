@@ -1,5 +1,5 @@
 <template>
-    <div class="last_comment">
+    <div class="last_comment -card">
         <h2 class="last_comment-header">Последний комментарий</h2>
         <div class="last_comment-body" v-for="(comment, key) in randomComments" :key="key" @click="openPost(comment.postId)">
             <router-link class="last_comment-body-link" :to="`/posts/${comment.postId}`">
@@ -23,5 +23,3 @@
         }
     }
 </script>
-
-<style src="./LastComment.scss" lang="scss" />
